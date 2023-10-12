@@ -1,0 +1,7 @@
+[
+    {"Fils": "Table", "Parent": "", "Deep": 1, "Info": "Table simple"},
+    {"Fils": "Table blanc", "Parent": "Table", "Deep": 1, "Info": "Table simple"},
+    {"Fils": "Table bois", "Parent": "Table", "Deep": 1, "Info": "Table simple"},
+    {"Fils": "Table blanc bois", "Parent": "Table blanc", "Deep": 2, "Info": "Table simple"},
+    {"Fils": "Table blanc bois", "Parent": "Table bois", "Deep": 2, "Info": "Table simple"}
+]
