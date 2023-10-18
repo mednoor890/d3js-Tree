@@ -1,16 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <script src="https://d3js.org/d3.v6.min.js"></script>
-    <title>D3.js Tree Diagram</title>
+    <meta charset="utf-8">
+    <title>Diagramme D3.js avec d3.tree() et Zoom</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Add the link to jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Add Bootstrap CSS and JavaScript links here -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.5/canvg.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <style>
-        /* Add any required CSS styles */
+        .node circle {
+            stroke-width: 2px;
+            cursor: pointer;
+        }
+        .node text {
+            font: 13px sans-serif;
+            pointer-events: none;
+        }
+        .link {
+            fill: none;
+            stroke: #ccc;
+            stroke-width: 1.5px;
+        }
+        .button-container {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.button-container button {
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db; /* Blue background color */
+    color: white; /* White text color */
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.button-container button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
+
+
     </style>
 </head>
 <body>
-    <div id="tree-container"></div>
+    <!-- Bootstrap modal element -->
+   <div class="button-container"> <button onclick="exportToPNG()">Export</button>
+    <button onclick="zoomIn()">Zoom In (+)</button>
+    <button onclick="zoomOut()">Zoom Out (-)</button>
+    <button onclick="toggleFullScreen()">Full Screen</button>
+    </div>
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="infoModalLabel">Information du nœud</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="infoContent"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <svg></svg>
+
+   
+    <!-- Include your script -->
     <script src="script.js"></script>
 </body>
 </html>
-
