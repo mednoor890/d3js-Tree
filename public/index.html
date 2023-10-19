@@ -18,10 +18,7 @@
             stroke-width: 2px;
             cursor: pointer;
         }
-        .node text {
-            font: 13px sans-serif;
-            pointer-events: none;
-        }
+      
         .link {
             fill: none;
             stroke: #ccc;
@@ -45,6 +42,10 @@
     font-size: 14px;
     cursor: pointer;
 }
+.node-text:hover {
+    fill:blue; /* Change text color on hover */
+    /* Add any other styles you want on hover */
+}
 
 .button-container button:hover {
     background-color: #2980b9; /* Darker blue on hover */
@@ -65,15 +66,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="infoModalLabel">Information du nœud</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                 
                 </div>
                 <div class="modal-body">
                     <p id="infoContent"></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-primary" id="closeModalButton" >Fermer</button>
                 </div>
             </div>
         </div>

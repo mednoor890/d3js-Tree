@@ -1,3 +1,9 @@
+document.getElementById("closeModalButton").addEventListener("click", function () {
+    $('#infoModal').modal('hide'); 
+    document.getElementById("infoContent").textContent = '';
+    d3.selectAll(".node text").style("cursor", "pointer");
+});
+
 function exportToPNG() {
     const svgElement = document.querySelector('svg');
     
@@ -28,6 +34,7 @@ function exportToPNG() {
     };
     img.src = svgUrl;
 }
+
 // Load data from data.json using D3
 fetch('data.json')
 .then(response => response.json())
@@ -82,13 +89,7 @@ fetch('data.json')
         .enter().append("g")
         .attr("class", "node")
         .attr("transform", d => `translate(${d.y},${d.x})`)
-        .on("click", click)
-        .on('mouseover', function(event, d) {
-            d3.select(this).select('circle').style('fill', 'green');
-        })
-        .on('mouseout', function(event, d) {
-            d3.select(this).select('circle').style('fill', 'green');
-        });
+        
 
     nodes.append("circle")
         .attr("r", 5)
@@ -97,13 +98,20 @@ fetch('data.json')
         .style('stroke-width', '2px')
         .style('cursor', 'pointer');
 
-    nodes.append("text")
+        nodes.append("text")
         .attr("dy", function(d) {
             return d.depth % 2 === 0 ? -15 : 15;
         })
-        .style("text-anchor", "middle")
-        .text(d => `${d.data.data.Fils}`);
-
+        
+        .style("cursor", "pointer")
+        .attr("class", "node-text")
+        .on("click", function(event, d) {
+            // Open the modal and display the information
+            $('#infoModal').modal('show');
+            document.getElementById("infoContent").textContent = d.data.data.Fils;
+        })
+        .text(d => `${d.data.data.Fils}`)
+        
     function click(event, d) {
         // Toggle the children and node color
         if (d.children) {
@@ -145,18 +153,12 @@ fetch('data.json')
             .append("g")
             .attr("class", "node")
             .attr("transform", d => `translate(${d.y},${d.x})`)
-            .on("click", click)
-            .on('mouseover', function(event, d) {
-                d3.select(this).select('circle').style('fill', 'green');
-            })
-            .on('mouseout', function(event, d) {
-                d3.select(this).select('circle').style('fill', 'green');
-            });
+            
+            
 
         // Update the node color
         enteredNodes.append("circle")
             .attr("r", 5)
-            .attr("fill", d => d.data.color)
             .style('stroke', 'green')
             .style('stroke-width', '2px')
             .style('cursor', 'pointer');
@@ -180,7 +182,6 @@ fetch('data.json')
         mergedNodes.transition()
             .attr("transform", d => `translate(${d.y},${d.x})`)
             .select("circle")
-            .attr("fill", d => d.data.color);
     }
 
    
