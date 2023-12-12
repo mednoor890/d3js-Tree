@@ -1,0 +1,104 @@
+html, body {
+            
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+.filter-container {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 10px;
+}
+
+.filter-input {
+margin-right: 10px;
+margin-left: 10px;
+padding: 5px;
+border: 1px solid #ccc;
+border-radius: 5px;
+width: 48px;
+height: 29px;
+outline: navajowhite;
+}
+h5{
+margin-top: 5px;
+}
+
+.filter-button {
+padding: 2px 12px;
+border: none;
+border-radius: 5px;
+background-color: #00ffd5a8;
+color: white;
+transform: scale(1);
+transition: transform 0.3s ease;
+cursor: pointer;
+}
+.filter-button:hover {
+transform: scale(1.1);
+background-color:#00ffd5ef ;
+}
+.filter-button:active {
+transform: scale(0.95);
+
+}
+.node circle {
+    stroke-width: 2px;
+    cursor: pointer;
+}
+
+.link {
+    fill: none;
+    stroke: #cccccc;
+    stroke-width: 1.5px;
+}
+.button-container {
+position: fixed;
+top: 10px;
+left: 10px;
+display: flex;
+flex-direction: column;
+}
+
+.button-container button {
+margin-bottom: 10px;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+background-color: #f7f3f3; 
+color: black; 
+font-size: 14px;
+cursor: pointer;
+}
+ button {
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f7f3f3; 
+    color: black; 
+    font-size: 14px;
+    cursor: pointer;
+    }
+.node-text:hover {
+fill:rgb(122, 191, 255); /* Change text color on hover */
+/* Add any other styles you want on hover */
+}
+
+.button-container button:hover {
+background-color: #a5abaf;
+border-color:black    
+}
+.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
